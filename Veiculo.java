@@ -1,8 +1,11 @@
 public abstract class Veiculo{
+    public final static int TAMANHO_CARRO = 50;
+    public final static int TAMANHO_MOTO = 25;
+    public final static int TAMANHO_CAMINHAO = 100;
     private static int valorId = 0;
-    private int tamanho;
+    private final int tamanho;
     private int posicao;
-    private int id;
+    private final int id;
 
     public Veiculo(int tamanho, int posicao){
         this.id = ++valorId;

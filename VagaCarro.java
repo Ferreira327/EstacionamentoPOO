@@ -1,7 +1,7 @@
 public class VagaCarro extends Vaga{
 
     public VagaCarro(){
-        super(TAMANHO_CARRO);
+        super(Veiculo.TAMANHO_CARRO);
     }
 
     @Override

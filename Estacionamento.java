@@ -10,7 +10,7 @@ public class Estacionamento {
     public Estacionamento(int caminhao, int moto, int carro) throws RuntimeException{
         vagas = new ArrayList<>();
         filaSair = new LinkedList<>();
-        if(caminhao*Vaga.TAMANHO_CAMINHAO + moto*Vaga.TAMANHO_MOTO+ carro*Vaga.TAMANHO_CARRO <= 700){
+        if(caminhao*(Vaga.TAMANHO_ESPACO_VAGA+Veiculo.TAMANHO_CAMINHAO) + moto*(Vaga.TAMANHO_ESPACO_VAGA+Veiculo.TAMANHO_MOTO)+ carro*(Vaga.TAMANHO_ESPACO_VAGA+Veiculo.TAMANHO_CARRO) <= 700){
             for(int i = 0; i<carro; i++){
                 vagas.add(new VagaCarro());
             }
@@ -30,7 +30,7 @@ public class Estacionamento {
         Random gerador = new Random();
 
         for(Vaga v: vagas){
-            if(v.isDisponivel() && (ve.getTamanho() == v.getTamanho())){
+            if(v.isDisponivel() && (ve.getTamanho() == (v.getTamanho()-Vaga.TAMANHO_ESPACO_VAGA))){
                 ve.setPosicao(300);
                 v.setVeiculo(ve,gerador.nextInt(3)+12);
                 return ;

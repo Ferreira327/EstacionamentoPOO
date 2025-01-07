@@ -1,7 +1,7 @@
 public class VagaCaminhao extends Vaga{
 
     public VagaCaminhao(){
-        super(TAMANHO_CAMINHAO);
+        super(Veiculo.TAMANHO_CAMINHAO);
     }
 
     @Override

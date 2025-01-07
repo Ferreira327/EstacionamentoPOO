@@ -1,7 +1,7 @@
 public class VagaMoto extends Vaga{
 
     public VagaMoto(){
-        super(TAMANHO_MOTO);
+        super(Veiculo.TAMANHO_MOTO);
     }
     
 

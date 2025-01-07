@@ -17,6 +17,7 @@ public class PistaSaida{
         return false;
     }
 
+
     public void adicionarVeiculo(Veiculo e){
         if(verificarSaida(e.getTamanho())){
             veiculos.add(e);

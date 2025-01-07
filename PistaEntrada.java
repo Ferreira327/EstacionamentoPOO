@@ -28,6 +28,7 @@ public class PistaEntrada{
             return retornar;
     }
 
+    
     private void adicionarVeiculo(){
         if( veiculos.isEmpty() || ((proximo.getTamanho()+10) < veiculos.getLast().getPosicao())){ // Se a entrada da pista tiver espaço, o próximo veículo é adicionado
             veiculos.add(proximo);

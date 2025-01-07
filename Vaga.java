@@ -5,14 +5,12 @@ public abstract class Vaga {
     private int tempo; // Tempo que o carro pode ficar na vaga
     private int tempoAtual; // Tempo do carro na vaga
     private boolean disponivel; // Se a vaga está ocupada ou não
-    public static final int TAMANHO_CAMINHAO = 100;
-    public static final int TAMANHO_CARRO = 50;
-    public static final int TAMANHO_MOTO = 25;
+    public static final int TAMANHO_ESPACO_VAGA = 20;
 
     public Vaga(int tamanho){
         tempo = 0;
         disponivel = true;
-        this.tamanho = tamanho;
+        this.tamanho = tamanho + TAMANHO_ESPACO_VAGA;
     }
 
     public boolean isDisponivel() {
