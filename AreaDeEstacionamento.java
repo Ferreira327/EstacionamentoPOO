@@ -37,5 +37,16 @@ public class AreaDeEstacionamento{
             pistaSaida.andarPista();
 
     }
+
+    public boolean verificarPistaEntrada(){
+        if(pistaEntrada.temProximo()){
+            return false;
+        }
+        return true;
+    }
+
+    public void adicionarVeiculo(Veiculo v){
+        pistaEntrada.escolherProximo(v);
+    }
     
 }

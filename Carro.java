@@ -1,5 +1,5 @@
 public class Carro extends Veiculo{
-    public Carro(int posicao){
+    public Carro(Localizacao posicao){
         super(50,posicao);
     }
 

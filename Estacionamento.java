@@ -31,7 +31,7 @@ public class Estacionamento {
 
         for(Vaga v: vagas){
             if(v.isDisponivel() && (ve.getTamanho() == (v.getTamanho()-Vaga.TAMANHO_ESPACO_VAGA))){
-                ve.setPosicao(300);
+                ve.setPosicao(new Localizacao(30, 300));
                 v.setVeiculo(ve,gerador.nextInt(3)+12);
                 return ;
             }

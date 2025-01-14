@@ -1,6 +1,6 @@
 public class Moto extends Veiculo{
 
-    public Moto(int posicao){
+    public Moto(Localizacao posicao){
         super(25,posicao);
     }
 

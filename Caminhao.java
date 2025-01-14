@@ -1,6 +1,6 @@
 public class Caminhao extends Veiculo{
 
-    public Caminhao(int posicao) {
+    public Caminhao(Localizacao posicao) {
         super(100,posicao);
     }
 

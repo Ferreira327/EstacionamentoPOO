@@ -2,8 +2,8 @@ public class Localizacao {
     private int x;
     private int y; 
 
-    public Localizacao(int xInicio, int tamanho, int y) {
-        this.x = xInicio;
+    public Localizacao(int x, int y) {
+        this.x = x;
         this.y = y;
     }
     
@@ -11,11 +11,15 @@ public class Localizacao {
         return x;
     }
 
+    public void setX(int x){
+        this.x = x;
+    }
+
     public int getY() {
         return y;
     }
 
-    public void moverX(int deslocamento) {
-        this.x += deslocamento;
+    public void moverY(int deslocamento) {
+        this.y += deslocamento;
     }
 }
