@@ -5,14 +5,17 @@ public class Simulacao {
         AreaDeEstacionamento area = new AreaDeEstacionamento(2,3,2);
         Mapa mapa = new Mapa();
         JanelaSimulacao janelaSimulacao = new JanelaSimulacao(mapa);
-        for(int i = 0; i<15; i++){
+        for(int i = 0; i<240; i++){
             janelaSimulacao.executarAcao();
             if(area.verificarPistaEntrada()){
                 Veiculo v = gerarVeiculo();
                 mapa.adicionarItem(v);
                 area.adicionarVeiculo(v);
             }
-            area.executarPasso();
+            Veiculo v = area.executarPasso();
+            if(v!= null){
+                mapa.removerItem(v);
+            }
             area.verPistaEntrada();
             area.verEstacionamento();
             area.verPistaSaida();

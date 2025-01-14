@@ -28,7 +28,8 @@ public class Mapa {
     
     public void atualizarMapa(Veiculo v){
         removerItem(v);
-        adicionarItem(v);
+        if(v.getPosicao() - v.getTamanho() >= 0){
+        adicionarItem(v);}
     }
     
     /* 

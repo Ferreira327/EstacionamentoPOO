@@ -26,7 +26,7 @@ public class JanelaSimulacao extends JFrame {
         for (Veiculo veiculo : mapa.getVeiculos()) {
             Localizacao localizacao = veiculo.getLocalizacaoAtual();
             // Ajusta a escala do desenho, com base nas coordenadas do veículo.
-            visaoMapa.desenharImagem(localizacao.getX(), localizacao.getY(), veiculo.getImagem());
+            visaoMapa.desenharImagem(localizacao.getX(), localizacao.getY(), veiculo.getImagem(),veiculo.getTamanho());
         }
         visaoMapa.repaint();
     }
@@ -76,9 +76,9 @@ public class JanelaSimulacao extends JFrame {
         /**
          * Desenha a imagem para um determinado item.
          */
-        public void desenharImagem(int x, int y, Image image) {
+        public void desenharImagem(int x, int y, Image image, int tamanho) {
             // Desenha a imagem com base nas coordenadas absolutas (x, y)
-            g.drawImage(image, x * xScale, y * yScale, 30, 30, this);
+            g.drawImage(image, x * xScale, y * yScale, 30, tamanho, this);
         }
 
         /**

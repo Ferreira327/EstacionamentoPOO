@@ -11,7 +11,7 @@ public class PistaSaida{
     
 
     public boolean verificarSaida(int tamanhoProximo){
-        if( veiculos.isEmpty() || ((310-tamanhoProximo) > veiculos.getLast().getPosicao())){
+        if( veiculos.isEmpty() || ((250-tamanhoProximo) > veiculos.getLast().getPosicao())){
             return true;
         }
         return false;
@@ -24,16 +24,19 @@ public class PistaSaida{
         }
     }
 
-    public void andarPista(){ // Método para movimentar a pista e, se o veículo estiver no final dela, retorná-lo
+    public Veiculo andarPista(){ // Método para movimentar a pista e, se o veículo estiver no final dela, retorná-lo
+        Veiculo retornar = null;
         Iterator<Veiculo> iterador = veiculos.descendingIterator(); //Iterator para modificar os veículos
             while(iterador.hasNext()){ 
                 Veiculo v = iterador.next();
                 if(v.getPosicao() - v.getTamanho() <= 0){ // Se a posição do veículo + seu tamanho for maior que o limite da pista, ele é retornado e retirado da lista.
                     iterador.remove();
+                    retornar = v;
                 }
                 else{
                 v.andar(false);}
             }
+            return retornar;
         }
 
         @Override

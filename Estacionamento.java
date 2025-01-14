@@ -5,7 +5,7 @@ public class Estacionamento {
     private static int tamanhoX = 700;
     private static int tamanhoY = 400;
     private List<Vaga> vagas;
-    Queue<Vaga> filaSair;
+    Queue<Veiculo> filaSair;
 
     public Estacionamento(int caminhao, int moto, int carro) throws RuntimeException{
         vagas = new ArrayList<>();
@@ -31,26 +31,36 @@ public class Estacionamento {
 
         for(Vaga v: vagas){
             if(v.isDisponivel() && (ve.getTamanho() == (v.getTamanho()-Vaga.TAMANHO_ESPACO_VAGA))){
-                ve.setPosicao(new Localizacao(30, 300));
+                ve.setPosicao(new Localizacao(50, 300));
                 v.setVeiculo(ve,gerador.nextInt(3)+12);
                 return ;
             }
         }
+
+        ve.setPosicao(new Localizacao(50,300));
+        filaSair.add(ve);
+
+
     }
 
     public void controlarEstacionamento(){
         for(Vaga v: vagas){
             if(!v.isDisponivel()){
                 if(!v.controlarVaga()){
-                    filaSair.add(v);
+                    filaSair.add(v.getVeiculo());
                 }
             }
         }
     }
 
     public Veiculo liberarCarro(){
-        Vaga liberar = filaSair.poll();
-        return liberar.liberarVaga();
+        Veiculo liberar = filaSair.poll();
+        for(Vaga v: vagas){
+            if(v.getVeiculo() == liberar){
+                v.liberarVaga();
+            }
+        }
+        return liberar;
     }
 
     public int tamanhoProximoVeiculoSair(){

@@ -1,7 +1,9 @@
+import javax.swing.ImageIcon;
+
 public class Moto extends Veiculo{
 
     public Moto(Localizacao posicao){
-        super(25,posicao);
+        super(Veiculo.TAMANHO_MOTO,posicao,new ImageIcon(Caminhao.class.getResource("Imagens/moto.png")).getImage());
     }
 
     @Override

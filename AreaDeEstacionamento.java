@@ -23,7 +23,7 @@ public class AreaDeEstacionamento{
         System.out.println(estacionamento);
     }
 
-    public void executarPasso(){
+    public Veiculo executarPasso(){
         Veiculo saida = pistaEntrada.andarPista();
             if(saida != null){
                 estacionamento.entrarCarro(saida);
@@ -34,8 +34,11 @@ public class AreaDeEstacionamento{
                     pistaSaida.adicionarVeiculo(estacionamento.liberarCarro());
                 }
             }
-            pistaSaida.andarPista();
-
+            saida = pistaSaida.andarPista();
+            if(saida != null){
+                return saida;
+            }
+            return null;
     }
 
     public boolean verificarPistaEntrada(){

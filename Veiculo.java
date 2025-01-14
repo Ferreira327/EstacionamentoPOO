@@ -1,21 +1,20 @@
 import java.awt.Image;
-import javax.swing.ImageIcon;
 
 public abstract class Veiculo{
-    public final static int TAMANHO_CARRO = 50;
-    public final static int TAMANHO_MOTO = 25;
-    public final static int TAMANHO_CAMINHAO = 100;
+    public final static int TAMANHO_CARRO = 30;
+    public final static int TAMANHO_MOTO = 20;
+    public final static int TAMANHO_CAMINHAO = 80;
     private static int valorId = 0;
     private final int tamanho;
     private Localizacao localizacao;
     private final int id;
     private Image imagem;
 
-    public Veiculo(int tamanho, Localizacao posicao){
+    public Veiculo(int tamanho, Localizacao posicao, Image imagem){
         this.id = ++valorId;
         this.tamanho = tamanho;
         this.localizacao = posicao;
-        imagem = new ImageIcon(getClass().getResource("Imagens/veiculo.png")).getImage();
+        this.imagem = imagem;
     }
 
     public int getTamanho() {

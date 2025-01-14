@@ -1,6 +1,10 @@
+import javax.swing.ImageIcon;
+
 public class Carro extends Veiculo{
     public Carro(Localizacao posicao){
-        super(50,posicao);
+        super(Veiculo.TAMANHO_CARRO,posicao,new ImageIcon(Carro.class.getResource("Imagens/veiculo.png")).getImage());
+        
+        
     }
 
     @Override
