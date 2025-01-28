@@ -11,6 +11,9 @@ public class Simulacao {
         estacionamentos.add(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 3
         
         Mapa mapa = new Mapa();
+        for(AreaDeEstacionamento estacionamento : estacionamentos){
+            mapa.adicionarEstacionamento(estacionamento.getEstacionamento());
+        }
         JanelaSimulacao janelaSimulacao = new JanelaSimulacao(mapa);
 
         while (true) {

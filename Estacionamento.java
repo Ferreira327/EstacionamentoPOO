@@ -1,15 +1,16 @@
+import java.awt.Image;
 import java.util.*;
-
-
 public class Estacionamento {
-    private static int tamanhoX = 700;
-    private static int tamanhoY = 400;
+    //private static int tamanhoX = 700;
+    //private static int tamanhoY = 400;
     private static int quantidade = 0;
+    private Localizacao localizacao;
     private int posicao;
     private List<Vaga> vagas;
+    private Image imagem;
     Queue<Veiculo> filaSair;
 
-    public Estacionamento(int caminhao, int moto, int carro) throws RuntimeException{
+    public Estacionamento(int caminhao, int moto, int carro, Image imagem) throws RuntimeException{
         vagas = new ArrayList<>();
         filaSair = new LinkedList<>();
         if(caminhao*(Vaga.TAMANHO_ESPACO_VAGA+Veiculo.TAMANHO_CAMINHAO) + moto*(Vaga.TAMANHO_ESPACO_VAGA+Veiculo.TAMANHO_MOTO)+ carro*(Vaga.TAMANHO_ESPACO_VAGA+Veiculo.TAMANHO_CARRO) <= 700){
@@ -26,8 +27,22 @@ public class Estacionamento {
         else{
             throw new RuntimeException("Estacionamento não permite o número de vagas");
         }
+        this.imagem = imagem;
         quantidade++;
         posicao = 250*quantidade;
+        localizacao = new Localizacao(posicao-52, 257);
+    }
+
+    public Image getImagem(){
+        return imagem;
+    }
+
+    public Localizacao getLocalizacaoAtual(){
+        return localizacao;
+    }
+
+    public int getTamanho() {
+        return 200;
     }
 
     public void entrarCarro(Veiculo ve){
@@ -35,13 +50,13 @@ public class Estacionamento {
 
         for(Vaga v: vagas){
             if(v.isDisponivel() && (ve.getTamanho() == (v.getTamanho()-Vaga.TAMANHO_ESPACO_VAGA))){
-                ve.setPosicao(new Localizacao(posicao+50, 300));
+                ve.setPosicao(new Localizacao(posicao+69, 300));
                 v.setVeiculo(ve,gerador.nextInt(3)+12);
                 return ;
             }
         }
 
-        ve.setPosicao(new Localizacao(posicao+50,300));
+        ve.setPosicao(new Localizacao(posicao+69,300));
         filaSair.add(ve);
 
 

@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 /**
@@ -7,19 +6,29 @@ import java.util.*;
  */
 public class Mapa {
     private ArrayList<Veiculo> itens;
+    private ArrayList<Estacionamento> estacionamentos;
     
 
     public Mapa() {
         itens = new ArrayList<>();
+        estacionamentos = new ArrayList<>();
     }
 
     public ArrayList<Veiculo> getVeiculos(){
         return itens;
     }
 
+    public ArrayList<Estacionamento> getEstacionamento(){
+        return estacionamentos;
+    }
+
     
     public void adicionarItem(Veiculo v){
         itens.add(v);
+    }
+
+    public void adicionarEstacionamento(Estacionamento e){
+        estacionamentos.add(e);
     }
     
     public void removerItem(Veiculo v){

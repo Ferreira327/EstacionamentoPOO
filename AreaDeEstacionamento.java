@@ -1,3 +1,4 @@
+import javax.swing.ImageIcon;
 public class AreaDeEstacionamento{
 
     private PistaEntrada pistaEntrada;
@@ -8,7 +9,11 @@ public class AreaDeEstacionamento{
     public AreaDeEstacionamento(int qtdVagasCaminhao, int qtdVagasMoto, int qtdVagasCarro){
         pistaEntrada = new PistaEntrada();
         pistaSaida = new PistaSaida();
-        estacionamento = new Estacionamento(qtdVagasCaminhao, qtdVagasMoto, qtdVagasCarro);
+        estacionamento = new Estacionamento(qtdVagasCaminhao, qtdVagasMoto, qtdVagasCarro,new ImageIcon(Estacionamento.class.getResource("Imagens/estacionamento.png")).getImage());
+    }
+
+    public Estacionamento getEstacionamento(){
+        return estacionamento;
     }
 
     public void verPistaEntrada(){
