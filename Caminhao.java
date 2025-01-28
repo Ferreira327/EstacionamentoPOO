@@ -10,9 +10,8 @@ public class Caminhao extends Veiculo {
 
     @Override
     public void selecionaCor() {
-        String[] cores = {"azul_marrom", "azul_preto", "branco_vermelho", "verde_branco", "vermelho"};
+        String[] cores = {"azul_preto", "branco_vermelho", "verde_branco", "vermelho"};
         String[] imagens = {
-            "Imagens/caminhao_azul_marrom.png",
             "Imagens/caminhao_azul_preto.png",
             "Imagens/caminhao_branco_vermelho.png",
             "Imagens/caminhao_verde_branco.png",
