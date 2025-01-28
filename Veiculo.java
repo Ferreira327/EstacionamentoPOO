@@ -9,6 +9,7 @@ public abstract class Veiculo{
     private Localizacao localizacao;
     private final int id;
     private Image imagem;
+    private String cor;
 
     public Veiculo(int tamanho, Localizacao posicao, Image imagem){
         this.id = ++valorId;
@@ -16,6 +17,13 @@ public abstract class Veiculo{
         this.localizacao = posicao;
         this.imagem = imagem;
     }
+
+    public void setCor(String cor, Image imagem) {
+        this.cor = cor;
+        this.imagem = imagem;
+    }
+
+    public abstract void selecionaCor();
 
     public int getTamanho() {
         return tamanho;
@@ -39,7 +47,7 @@ public abstract class Veiculo{
 
     public void andar(boolean sentido){
         if(sentido){
-            localizacao.moverY(20);;
+            localizacao.moverY(20);
             if(localizacao.getY() > PistaEntrada.tamanhoY){
                 localizacao.moverY(PistaEntrada.tamanhoY);
             }
@@ -59,9 +67,5 @@ public abstract class Veiculo{
     @Override
     public String toString(){
         return "Posicao: " + localizacao.getY() + "\n====================\n";
-    }
-
-    
-
-    
+    }    
 }

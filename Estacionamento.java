@@ -58,8 +58,6 @@ public class Estacionamento {
 
         ve.setPosicao(new Localizacao(posicao+69,300));
         filaSair.add(ve);
-
-
     }
 
     public void controlarEstacionamento(){
@@ -100,12 +98,4 @@ public class Estacionamento {
         }
         return retornar;
     }
-    
-
-
-    
-    
-
-    
-    
 }
