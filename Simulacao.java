@@ -3,17 +3,41 @@ import java.util.List;
 import java.util.Random;
 
 public class Simulacao {
-    public static void main(String[] args) {
-        // Cria uma lista de estacionamentos
-        List<AreaDeEstacionamento> estacionamentos = new ArrayList<>();
-        estacionamentos.add(new AreaDeEstacionamento(2, 3, 2)); // Estacionamento 1
-        estacionamentos.add(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 2
-        estacionamentos.add(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 3
+
+    private int quantidadeAreas = 0;
+    private List<AreaDeEstacionamento> areas;
+
+    public Simulacao(){
+        areas = new ArrayList<>();
+    }
+
+    private void adicionarArea(AreaDeEstacionamento area){
+        quantidadeAreas += 1;
+        areas.add(area);
+    }
+
+    public List<AreaDeEstacionamento> getAreas() {
+        return areas;
+    }
+
+    public void iniciar() {
+        
+
+        adicionarArea(new AreaDeEstacionamento(2, 3, 2)); // Estacionamento 1
+        adicionarArea(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 2
+        adicionarArea(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 3
+        adicionarArea(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 3
+        adicionarArea(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 3
+        adicionarArea(new AreaDeEstacionamento(1, 2, 1)); // Estacionamento 3
         
         Mapa mapa = new Mapa();
-        for(AreaDeEstacionamento estacionamento : estacionamentos){
-            mapa.adicionarEstacionamento(estacionamento.getEstacionamento());
+
+        List<AreaDeEstacionamento> areas = getAreas();
+
+        for(AreaDeEstacionamento areaDeEstacionamento : areas){
+            mapa.adicionarEstacionamento(areaDeEstacionamento.getEstacionamento());
         }
+
         JanelaSimulacao janelaSimulacao = new JanelaSimulacao(mapa);
 
         while (true) {
@@ -21,8 +45,8 @@ public class Simulacao {
 
             // Gera um veículo e atribui a um estacionamento específico
             
-            int indiceEstacionamento = new Random().nextInt(estacionamentos.size()); // Escolhe um estacionamento aleatório
-            AreaDeEstacionamento area = estacionamentos.get(indiceEstacionamento);
+            int indiceEstacionamento = new Random().nextInt(areas.size()); // Escolhe um estacionamento aleatório
+            AreaDeEstacionamento area = areas.get(indiceEstacionamento);
             Veiculo v = gerarVeiculo(indiceEstacionamento);
             // Adiciona o veículo ao estacionamento escolhido
             if (area.verificarPistaEntrada()) {
@@ -31,7 +55,7 @@ public class Simulacao {
             }
 
             // Executa um passo de simulação para cada estacionamento
-            for (AreaDeEstacionamento estacionamento : estacionamentos) {
+            for (AreaDeEstacionamento estacionamento : areas) {
                 Veiculo veiculoSaindo = estacionamento.executarPasso();
                 if (veiculoSaindo != null) {
                     mapa.removerItem(veiculoSaindo);
@@ -52,15 +76,7 @@ public class Simulacao {
         Random gerador = new Random();
         int numero = gerador.nextInt(6);
         int posicaoX = 0;
-        if(indiceEstacionamento == 0){
-            posicaoX = 250;
-        }
-        else if (indiceEstacionamento == 1) {
-            posicaoX = 500;
-        }
-        else if (indiceEstacionamento == 2) {
-            posicaoX = 750;
-        }
+        posicaoX = indiceEstacionamento * 250 + 250;
         switch (numero) {
             case 0, 1, 2:
                 novoVeiculo = new Carro(new Localizacao(posicaoX, 0));

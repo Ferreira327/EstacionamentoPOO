@@ -1,8 +1,9 @@
 import java.awt.Image;
 import java.util.*;
+
+
 public class Estacionamento {
-    //private static int tamanhoX = 700;
-    //private static int tamanhoY = 400;
+    private static final int TAMANHO_ESTACIONAMENTO = 257;
     private static int quantidade = 0;
     private Localizacao localizacao;
     private int posicao;
@@ -30,7 +31,7 @@ public class Estacionamento {
         this.imagem = imagem;
         quantidade++;
         posicao = 250*quantidade;
-        localizacao = new Localizacao(posicao-52, 257);
+        localizacao = new Localizacao(posicao-AreaDeEstacionamento.ESPACO_ESTACIONAMENTO, TAMANHO_ESTACIONAMENTO);
     }
 
     public Image getImagem(){
@@ -50,13 +51,13 @@ public class Estacionamento {
 
         for(Vaga v: vagas){
             if(v.isDisponivel() && (ve.getTamanho() == (v.getTamanho()-Vaga.TAMANHO_ESPACO_VAGA))){
-                ve.setPosicao(new Localizacao(posicao+69, 300));
+                ve.setPosicao(new Localizacao(posicao+AreaDeEstacionamento.ESPACO_PISTA, 300));
                 v.setVeiculo(ve,gerador.nextInt(3)+12);
                 return ;
             }
         }
 
-        ve.setPosicao(new Localizacao(posicao+69,300));
+        ve.setPosicao(new Localizacao(posicao+AreaDeEstacionamento.ESPACO_PISTA,300));
         filaSair.add(ve);
 
 

@@ -4,6 +4,8 @@ public class AreaDeEstacionamento{
     private PistaEntrada pistaEntrada;
     private PistaSaida pistaSaida;
     private Estacionamento estacionamento;
+    public static final int ESPACO_PISTA = 69;
+    public static final int ESPACO_ESTACIONAMENTO = 52;
 
 
     public AreaDeEstacionamento(int qtdVagasCaminhao, int qtdVagasMoto, int qtdVagasCarro){
