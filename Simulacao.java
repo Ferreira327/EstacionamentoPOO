@@ -17,10 +17,10 @@ public class Simulacao {
             janelaSimulacao.executarAcao();
 
             // Gera um veículo e atribui a um estacionamento específico
-            Veiculo v = gerarVeiculo();
+            
             int indiceEstacionamento = new Random().nextInt(estacionamentos.size()); // Escolhe um estacionamento aleatório
             AreaDeEstacionamento area = estacionamentos.get(indiceEstacionamento);
-
+            Veiculo v = gerarVeiculo(indiceEstacionamento);
             // Adiciona o veículo ao estacionamento escolhido
             if (area.verificarPistaEntrada()) {
                 mapa.adicionarItem(v);
@@ -44,20 +44,29 @@ public class Simulacao {
         }
     }
 
-    private static Veiculo gerarVeiculo() {
+    private static Veiculo gerarVeiculo(int indiceEstacionamento) {
         Veiculo novoVeiculo;
         Random gerador = new Random();
         int numero = gerador.nextInt(6);
-
+        int posicaoX = 0;
+        if(indiceEstacionamento == 0){
+            posicaoX = 250;
+        }
+        else if (indiceEstacionamento == 1) {
+            posicaoX = 500;
+        }
+        else if (indiceEstacionamento == 2) {
+            posicaoX = 750;
+        }
         switch (numero) {
             case 0, 1, 2:
-                novoVeiculo = new Carro(new Localizacao(10, 0));
+                novoVeiculo = new Carro(new Localizacao(posicaoX, 0));
                 break;
             case 3, 4:
-                novoVeiculo = new Moto(new Localizacao(10, 0));
+                novoVeiculo = new Moto(new Localizacao(posicaoX, 0));
                 break;
             case 5:
-                novoVeiculo = new Caminhao(new Localizacao(10, 0));
+                novoVeiculo = new Caminhao(new Localizacao(posicaoX, 0));
                 break;
             default:
                 throw new AssertionError();

@@ -4,6 +4,8 @@ import java.util.*;
 public class Estacionamento {
     private static int tamanhoX = 700;
     private static int tamanhoY = 400;
+    private static int quantidade = 0;
+    private int posicao;
     private List<Vaga> vagas;
     Queue<Veiculo> filaSair;
 
@@ -24,6 +26,8 @@ public class Estacionamento {
         else{
             throw new RuntimeException("Estacionamento não permite o número de vagas");
         }
+        quantidade++;
+        posicao = 250*quantidade;
     }
 
     public void entrarCarro(Veiculo ve){
@@ -31,13 +35,13 @@ public class Estacionamento {
 
         for(Vaga v: vagas){
             if(v.isDisponivel() && (ve.getTamanho() == (v.getTamanho()-Vaga.TAMANHO_ESPACO_VAGA))){
-                ve.setPosicao(new Localizacao(50, 300));
+                ve.setPosicao(new Localizacao(posicao+50, 300));
                 v.setVeiculo(ve,gerador.nextInt(3)+12);
                 return ;
             }
         }
 
-        ve.setPosicao(new Localizacao(50,300));
+        ve.setPosicao(new Localizacao(posicao+50,300));
         filaSair.add(ve);
 
 
