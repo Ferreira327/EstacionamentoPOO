@@ -26,4 +26,9 @@ public class Carro extends Veiculo {
     public String toString() {
         return "====================\nCarro\n" + super.toString();
     }
+
+    @Override
+    public String acao() {
+        return "Carro Piscou Farol";
+    }
 }

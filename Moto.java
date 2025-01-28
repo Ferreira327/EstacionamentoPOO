@@ -28,4 +28,9 @@ public class Moto extends Veiculo {
     public String toString() {
         return "====================\nMoto\n" + super.toString();
     }
+
+    @Override
+    public String acao() {
+        return "Moto Empinou";
+    }
 }

@@ -1,4 +1,11 @@
 import javax.swing.ImageIcon;
+
+
+/**
+ * Classe que representa a área de estacionamento, composta por uma pista de entrada,
+ * uma pista de saída e o estacionamento propriamente dito.
+ */
+
 public class AreaDeEstacionamento{
 
     private PistaEntrada pistaEntrada;
@@ -6,7 +13,17 @@ public class AreaDeEstacionamento{
     private Estacionamento estacionamento;
     public static final int ESPACO_PISTA = 69;
     public static final int ESPACO_ESTACIONAMENTO = 52;
+    public static final int POSICAO_ESTACIONADO = 300;
+    
 
+     /**
+     * Construtor da classe AreaDeEstacionamento. Inicializa a pista de entrada, a pista de saída
+     * e o estacionamento com base na quantidade de vagas disponíveis para caminhões, motos e carros.
+     *
+     * @param qtdVagasCaminhao A quantidade de vagas para caminhões.
+     * @param qtdVagasMoto A quantidade de vagas para motos.
+     * @param qtdVagasCarro A quantidade de vagas para carros.
+     */
 
     public AreaDeEstacionamento(int qtdVagasCaminhao, int qtdVagasMoto, int qtdVagasCarro){
         pistaEntrada = new PistaEntrada();
@@ -29,6 +46,14 @@ public class AreaDeEstacionamento{
     public void verEstacionamento(){
         System.out.println(estacionamento);
     }
+
+
+    /**
+     * Faz os veículos avançarem na área de estacionamento, realizando operações na pista de entrada,
+     * no estacionamento e na pista de saída.
+     *
+     * @return Um veículo que saiu da área, ou nulo se nenhum veículo sair.
+     */
 
     public Veiculo executarPasso(){
         Veiculo saida = pistaEntrada.andarPista();
@@ -58,5 +83,7 @@ public class AreaDeEstacionamento{
     public void adicionarVeiculo(Veiculo v){
         pistaEntrada.escolherProximo(v);
     }
+
+
     
 }

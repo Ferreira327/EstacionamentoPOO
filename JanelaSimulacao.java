@@ -13,7 +13,7 @@ public class JanelaSimulacao extends JFrame {
         visaoMapa = new VisaoMapa();
         getContentPane().add(visaoMapa);
         setTitle("Simulador");
-        setSize(1000, 500);
+        setSize(1000, 700);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -23,17 +23,28 @@ public class JanelaSimulacao extends JFrame {
      */
     public void executarAcao() {
         visaoMapa.preparePaint();
+        
+
+        for (Estacionamento estacionamento : mapa.getEstacionamento()) {
+
+            String atualizacao = estacionamento.verAtualizacao();
+            Localizacao localizacao = estacionamento.getLocalizacaoAtual();
+            if(atualizacao == null){
+                atualizacao = "Sem atualização";
+            }
+            visaoMapa.escrever(atualizacao,estacionamento.getPosicao());
+            // Ajusta a escala do desenho, com base nas coordenadas do veículo.
+            visaoMapa.desenharImagem(localizacao.getX(), localizacao.getY(), estacionamento.getImagem(),estacionamento.getTamanho(),200);
+        }
+
+
         for (Veiculo veiculo : mapa.getVeiculos()) {
             Localizacao localizacao = veiculo.getLocalizacaoAtual();
             // Ajusta a escala do desenho, com base nas coordenadas do veículo.
             visaoMapa.desenharImagem(localizacao.getX(), localizacao.getY(), veiculo.getImagem(),veiculo.getTamanho(),30);
         }
 
-        for (Estacionamento estacionamento : mapa.getEstacionamento()) {
-            Localizacao localizacao = estacionamento.getLocalizacaoAtual();
-            // Ajusta a escala do desenho, com base nas coordenadas do veículo.
-            visaoMapa.desenharImagem(localizacao.getX(), localizacao.getY(), estacionamento.getImagem(),estacionamento.getTamanho(),200);
-        }
+       
         visaoMapa.repaint();
     }
 
@@ -59,7 +70,7 @@ public class JanelaSimulacao extends JFrame {
          * Informa ao gerenciador GUI o tamanho preferido.
          */
         public Dimension getPreferredSize() {
-            return new Dimension(1000, 500);  // Tamanho fixo para o mapa, pode ser ajustado conforme necessário
+            return new Dimension(1000, 700);  // Tamanho fixo para o mapa, pode ser ajustado conforme necessário
         }
         
         /**
@@ -83,8 +94,9 @@ public class JanelaSimulacao extends JFrame {
          * Desenha a imagem para um determinado item.
          */
         public void desenharImagem(int x, int y, Image image, int tamanho, int width) {
+            if(y < AreaDeEstacionamento.POSICAO_ESTACIONADO){
             // Desenha a imagem com base nas coordenadas absolutas (x, y)
-            g.drawImage(image, x * xScale, y * yScale, width, tamanho, this);
+            g.drawImage(image, x * xScale, y * yScale, width, tamanho, this);}
         }
 
         /**
@@ -95,6 +107,15 @@ public class JanelaSimulacao extends JFrame {
             if (imagemMapa != null) {
                 g.drawImage(imagemMapa, 0, 0, null);
             }
+        }
+
+        public void escrever(String escrever, int width){
+            g.setFont(new Font("Arial", Font.PLAIN,18));
+            g.setColor(Color.BLUE);
+            // Escrever texto na tela
+            g.drawString("Ultima atualização:" , width-50, 500);
+            g.setColor(Color.RED);
+            g.drawString(escrever, width-50, 520);
         }
     }
 }

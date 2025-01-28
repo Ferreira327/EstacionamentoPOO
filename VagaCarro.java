@@ -8,5 +8,7 @@ public class VagaCarro extends Vaga{
     public String toString(){
         return "Vaga de Carro\n" + super.toString();
     }
+
+    
     
 }

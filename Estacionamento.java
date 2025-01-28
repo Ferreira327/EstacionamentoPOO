@@ -10,6 +10,7 @@ public class Estacionamento {
     private List<Vaga> vagas;
     private Image imagem;
     Queue<Veiculo> filaSair;
+    private String ultimaAtualizacao;
 
     public Estacionamento(int caminhao, int moto, int carro, Image imagem) throws RuntimeException{
         vagas = new ArrayList<>();
@@ -53,6 +54,7 @@ public class Estacionamento {
             if(v.isDisponivel() && (ve.getTamanho() == (v.getTamanho()-Vaga.TAMANHO_ESPACO_VAGA))){
                 ve.setPosicao(new Localizacao(posicao+AreaDeEstacionamento.ESPACO_PISTA, 300));
                 v.setVeiculo(ve,gerador.nextInt(3)+12);
+                ultimaAtualizacao = ve.acao();
                 return ;
             }
         }
@@ -89,6 +91,10 @@ public class Estacionamento {
         return !filaSair.isEmpty();
     }
 
+    public int getPosicao() {
+        return posicao;
+    }
+
 
 
     @Override
@@ -98,5 +104,9 @@ public class Estacionamento {
             retornar += v.toString();
         }
         return retornar;
+    }
+
+    public String verAtualizacao(){
+        return this.ultimaAtualizacao;
     }
 }

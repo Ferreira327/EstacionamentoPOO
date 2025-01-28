@@ -1,5 +1,11 @@
 import java.awt.Image;
 
+/**
+ * Classe que realiza operações matemáticas avançadas.
+ * 
+ * @author Gabriel Ferreira
+ */
+
 public abstract class Veiculo{
     public final static int TAMANHO_CARRO = 30;
     public final static int TAMANHO_MOTO = 20;
@@ -45,6 +51,12 @@ public abstract class Veiculo{
         return imagem;
     }
 
+     /**
+     * Faz o Veículo andar em determinado sentido
+     *
+     * @param sentido O sentido que o carro deverá andar.
+     */
+
     public void andar(boolean sentido){
         if(sentido){
             localizacao.moverY(20);
@@ -63,9 +75,11 @@ public abstract class Veiculo{
     public int getId() {
         return id;
     }
-
+    
     @Override
     public String toString(){
         return "Posicao: " + localizacao.getY() + "\n====================\n";
-    }    
+    }
+    
+    public abstract String acao();
 }

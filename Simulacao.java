@@ -39,8 +39,9 @@ public class Simulacao {
         }
 
         JanelaSimulacao janelaSimulacao = new JanelaSimulacao(mapa);
-
+        
         while (true) {
+            
             janelaSimulacao.executarAcao();
 
             // Gera um veículo e atribui a um estacionamento específico
@@ -55,16 +56,16 @@ public class Simulacao {
             }
 
             // Executa um passo de simulação para cada estacionamento
-            for (AreaDeEstacionamento estacionamento : areas) {
-                Veiculo veiculoSaindo = estacionamento.executarPasso();
+            for (AreaDeEstacionamento areaEstacionamento : areas) {
+                Veiculo veiculoSaindo = areaEstacionamento.executarPasso();
                 if (veiculoSaindo != null) {
                     mapa.removerItem(veiculoSaindo);
                 }
-
+               
                 // Exibe o estado atual de cada estacionamento
-                estacionamento.verPistaEntrada();
-                estacionamento.verEstacionamento();
-                estacionamento.verPistaSaida();
+                //estacionamento.verPistaEntrada();
+                //estacionamento.verEstacionamento();
+                //estacionamento.verPistaSaida();
             }
 
             esperar(1000); // Pausa a simulação por 1 segundo

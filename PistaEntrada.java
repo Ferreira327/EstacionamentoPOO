@@ -5,6 +5,7 @@ public class PistaEntrada {
     //public static int tamanhoX = 60;
     Veiculo proximo;
     LinkedList<Veiculo> veiculos;
+    
 
     public PistaEntrada() {
         veiculos = new LinkedList<>(); // Lista de Veículos
@@ -53,4 +54,6 @@ public class PistaEntrada {
     public boolean temProximo() {
         return proximo != null; // Retorna true se próximo não for null
     }
+
+    
 }

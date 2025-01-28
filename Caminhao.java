@@ -29,4 +29,9 @@ public class Caminhao extends Veiculo {
     public String toString() {
         return "====================\nCaminhao\n" + super.toString();
     }
+
+    @Override
+    public String acao() {
+        return "Caminhao Buzinou";
+    }
 }
