@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class PistaSaida{
-    public static int tamanhoY = 300;
-    public static int tamanhoX = 60;
+    //public static int tamanhoY = 300;
+    //public static int tamanhoX = 60;
     LinkedList<Veiculo> veiculos;
 
     public PistaSaida(){
@@ -39,16 +39,16 @@ public class PistaSaida{
             return retornar;
         }
 
-        @Override
-        public String toString(){
-            Iterator<Veiculo> iterador = veiculos.descendingIterator();
-            String palavra = "\nPista Saida\n";
-            while(iterador.hasNext()){
-                Veiculo v = iterador.next();
-                palavra += v.toString() ;
-            }
-            return palavra;
+    @Override
+    public String toString(){
+        Iterator<Veiculo> iterador = veiculos.descendingIterator();
+        String palavra = "\nPista Saida\n";
+        while(iterador.hasNext()){
+            Veiculo v = iterador.next();
+            palavra += v.toString() ;
         }
+        return palavra;
+    }
             
     
 }

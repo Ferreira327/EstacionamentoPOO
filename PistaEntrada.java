@@ -2,7 +2,7 @@ import java.util.*;
 
 public class PistaEntrada {
     public static int tamanhoY = 300;
-    public static int tamanhoX = 60;
+    //public static int tamanhoX = 60;
     Veiculo proximo;
     LinkedList<Veiculo> veiculos;
 
