@@ -55,9 +55,6 @@ public class Simulacao {
         adicionarArea(new AreaDeEstacionamento(2, 3, 2));
         adicionarArea(new AreaDeEstacionamento(1, 2, 1));
         adicionarArea(new AreaDeEstacionamento(1, 2, 1));
-        adicionarArea(new AreaDeEstacionamento(1, 2, 1));
-        adicionarArea(new AreaDeEstacionamento(1, 2, 1));
-        adicionarArea(new AreaDeEstacionamento(1, 2, 1));
 
         Mapa mapa = new Mapa();
 
